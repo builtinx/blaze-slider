@@ -7,10 +7,9 @@ fi
 ASSETDIRS=$(find dist -type d -mindepth 1 -maxdepth 3 -exec basename {} \;)
 for i in $ASSETDIRS
 do
-    if [ ! -d "dist/${i}" ]
+    if [ ! -d "blaze-slider/dist/${i}" ]
     then
         continue
     fi
     aws s3 sync "blaze-slider/dist/${i}" "${BUILTIN_STATIC_S3_URI}/dist/blaze/${i}"
-
 done
