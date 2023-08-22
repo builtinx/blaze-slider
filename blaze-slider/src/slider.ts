@@ -61,7 +61,7 @@ export class BlazeSlider extends Automata {
     construct(config, slider)
 
     // throttled to refresh every 200ms when resizing
-    let ignoreResize = false
+    let ignoreResize = true;
     let width = 0
     window.addEventListener('resize', () => {
       if (width === 0) {
