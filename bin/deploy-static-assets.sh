@@ -4,12 +4,9 @@ if [ ! "$BUILTIN_STATIC_S3_URI" ]; then
     exit 1
 fi
 
-ASSETDIRS=$(find blaze-slider/dist -type f -mindepth 1 -maxdepth 3 -exec basename {} \;)
-for i in $ASSETDIRS
+ASSETFILES=$(find blaze-slider/dist -type f -mindepth 1 -maxdepth 3)
+
+for file in $ASSETFILES
 do
-    if [ ! -d "blaze-slider/dist/${i}" ]
-    then
-        continue
-    fi
-    aws s3 sync "blaze-slider/dist/${i}" "${BUILTIN_STATIC_S3_URI}/dist/blaze/${i}"
+    aws s3 cp "$file" "${BUILTIN_STATIC_S3_URI}/dist/blaze/$(basename "$file")"
 done
