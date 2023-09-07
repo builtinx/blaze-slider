@@ -50,7 +50,7 @@ jobs:
       - run:
           working_directory: 'blaze-slider'
           name: npm install
-          command: npm ci
+          command: npm ci --include=dev
       - run:
           working_directory: 'blaze-slider'
           name: build assets
@@ -64,7 +64,7 @@ jobs:
       - run:
           working_directory: 'blaze-slider'
           name: npm install
-          command: npm ci
+          command: npm ci --include=dev
       - run:
           working_directory: 'blaze-slider'
           name: build assets
