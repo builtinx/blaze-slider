@@ -110,6 +110,8 @@ export function dragSupport(slider: BlazeSlider) {
 
   // prevent dragging of elements inside the slider
   track.addEventListener('dragstart', preventDefault)
+  //This line of code needs to be here I am not really sure why but it breaks the slider if it is not here on ios
+  document.addEventListener('touchend', ()=>{});
 }
 
 function updateEventListener(
