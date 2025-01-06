@@ -1,7 +1,7 @@
 {
   "type": "module",
-  "name": "blaze-slider",
-  "version": "1.9.3",
+  "name": "@builtinx/blaze-slider",
+  "version": "1.0.1",
   "description": "Blazing Fast Slider For High Performance Web",
   "main": "dist/blaze-slider.cjs.js",
   "module": "dist/blaze-slider.esm.js",
@@ -27,6 +27,7 @@
         "import": "./dist/blaze-slider.esm.js",
         "require": "./dist/blaze-slider.cjs.dev.js"
       },
+      "types": "./dist/blaze-slider.esm.d.ts",
       "import": "./dist/blaze-slider.esm.js",
       "require": "./dist/blaze-slider.cjs.prod.js"
     },
