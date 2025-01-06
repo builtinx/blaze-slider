@@ -4,14 +4,17 @@ orbs:
   aws-cli: circleci/aws-cli@3.1.4
 
 pipeline-feature: &pipeline-feature
+  context:
+    - write-github-packages
+    - aws-services
   filters:
     branches:
       ignore:
         - main
 pipeline-test: &pipeline-test
   context:
-    - aws-develop
-    - builtin-develop
+    - write-github-packages
+    - aws-services
   filters:
     branches:
       only:
@@ -33,6 +36,14 @@ pipeline-prod: &pipeline-prod
       only:
         - main
 
+commands:
+  setup-npm:
+    description: "Setting up NPM"
+    steps:
+      - run:
+          working_directory: 'blaze-slider'
+          command: |
+            echo "//npm.pkg.github.com/:_authToken=${GH_PAT_REPO}" >> .npmrc
 executors:
   base:
     docker:
@@ -47,6 +58,7 @@ jobs:
     executor: node
     steps:
       - checkout
+      - setup-npm
       - run:
           working_directory: 'blaze-slider'
           name: npm install
