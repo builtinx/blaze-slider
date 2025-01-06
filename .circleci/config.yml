@@ -36,6 +36,14 @@ pipeline-prod: &pipeline-prod
       only:
         - main
 
+commands:
+  setup-npm:
+    description: "Setting up NPM"
+    steps:
+      - run:
+          working_directory: 'Builtin.Components'
+          command: |
+            echo "//npm.pkg.github.com/:_authToken=${GH_PAT_REPO}" >> .npmrc
 executors:
   base:
     docker:
@@ -50,6 +58,7 @@ jobs:
     executor: node
     steps:
       - checkout
+      - setup-npm
       - run:
           working_directory: 'blaze-slider'
           name: npm install
