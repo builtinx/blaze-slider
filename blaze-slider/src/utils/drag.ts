@@ -3,9 +3,8 @@ import { Track } from '../types'
 import { disableTransition, enableTransition, updateTransform } from './methods'
 import { isTouch } from './isTouch'
 
-const nextSlideMovementThreshold = 50;
-const startDraggingThreshold = 25;
-
+const nextSlideMovementThreshold = 50
+const startDraggingThreshold = 25
 
 export function handlePointerDown(
   this: Track,
@@ -42,10 +41,10 @@ function handlePointerMove(this: Track, moveEvent: PointerEvent | TouchEvent) {
   // consider dragging only if the user has dragged more than 5px
   if (draggedAbs > startDraggingThreshold) {
     // track.setAttribute('data-dragging', 'true')
-    track.slider.isDragging = true;
-    track.slider.dragged = dragged;
-    updateTransform(track.slider);
-    moveEvent.preventDefault(); // prevent vertical scrolling if horizontal dragging is happening
+    track.slider.isDragging = true
+    track.slider.dragged = dragged
+    updateTransform(track.slider)
+    moveEvent.preventDefault() // prevent vertical scrolling if horizontal dragging is happening
   }
 
   if (!track.isScrolled && track.slider.config.loop) {
@@ -110,8 +109,8 @@ export function dragSupport(slider: BlazeSlider) {
 
   // prevent dragging of elements inside the slider
   track.addEventListener('dragstart', preventDefault)
-  //This line of code needs to be here I am not really sure why but it breaks the slider if it is not here on ios
-  document.addEventListener('touchend', ()=>{});
+  // This line of code needs to be here I am not really sure why but it breaks the slider if it is not here on ios
+  document.addEventListener('touchend', () => {})
 }
 
 function updateEventListener(

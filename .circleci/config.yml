@@ -38,7 +38,7 @@ pipeline-prod: &pipeline-prod
 
 commands:
   setup-npm:
-    description: "Setting up NPM"
+    description: 'Setting up NPM'
     steps:
       - run:
           working_directory: 'blaze-slider'
@@ -90,7 +90,7 @@ jobs:
     parameters:
       profile:
         type: enum
-        enum: ["builtin-test", "builtin-staging", "builtin-prod"]
+        enum: ['builtin-test', 'builtin-staging', 'builtin-prod']
     steps:
       - checkout
       - aws-cli/setup:

@@ -1,6 +1,7 @@
 import replace from '@rollup/plugin-replace'
-import { terser } from 'rollup-plugin-terser'
-import typescript from 'rollup-plugin-ts'
+import terser from '@rollup/plugin-terser'
+import typescript from '@rollup/plugin-typescript'
+import { dts } from 'rollup-plugin-dts'
 
 const banner = `/* blaze-slider v1.9.3 by Manan Tank */`
 
@@ -83,4 +84,10 @@ const esmBuild = {
   },
 }
 
-export default [devBuilds, prodBuilds, esmBuild]
+const rollupTypesConfig = {
+  input: 'dist/types/index.d.ts',
+  output: [{ file: 'dist/blaze-slider.d.ts', format: 'es' }],
+  plugins: [dts()],
+}
+
+export default [devBuilds, prodBuilds, esmBuild, rollupTypesConfig]
