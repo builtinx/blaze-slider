@@ -3,7 +3,8 @@ import { DEV, END, START } from './constants'
 import { BlazeConfig, MediaConfig, SlideChangeCallback, Track } from './types'
 import { handleAutoplay } from './utils/autoplay'
 import { createConfig, defaultConfig } from './utils/config'
-import { dragSupport, handlePointerDown, isTouch } from './utils/drag'
+import { dragSupport, handlePointerDown } from './utils/drag'
+import { isTouch } from './utils/isTouch'
 import { updateTransform } from './utils/methods'
 import { handleNavigation } from './utils/navigation'
 import { handlePagination } from './utils/pagination'
@@ -61,7 +62,7 @@ export class BlazeSlider extends Automata {
     construct(config, slider)
 
     // throttled to refresh every 200ms when resizing
-    let ignoreResize = true;
+    let ignoreResize = true
     let width = 0
     window.addEventListener('resize', () => {
       if (width === 0) {

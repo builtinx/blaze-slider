@@ -1,5 +1,5 @@
 import { BlazeSlider } from '../slider'
-import { onSlideEnd } from './scroll'
+import { onSlideEnd } from './onSlideEnd'
 
 // when loop is disabled, we must update the offset
 export function noLoopScroll(slider: BlazeSlider) {

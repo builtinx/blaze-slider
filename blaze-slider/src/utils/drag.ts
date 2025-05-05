@@ -1,11 +1,11 @@
 import { BlazeSlider } from '../slider'
 import { Track } from '../types'
 import { disableTransition, enableTransition, updateTransform } from './methods'
+import { isTouch } from './isTouch'
 
 const nextSlideMovementThreshold = 50;
 const startDraggingThreshold = 25;
 
-export const isTouch = () => 'ontouchstart' in window
 
 export function handlePointerDown(
   this: Track,

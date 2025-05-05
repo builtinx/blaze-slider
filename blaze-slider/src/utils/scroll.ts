@@ -1,5 +1,6 @@
 import { BlazeSlider } from '../slider'
-import { isTouch } from './drag'
+import { isTouch } from './isTouch'
+import { onSlideEnd } from './onSlideEnd'
 import {
   noLoopScroll,
   wrapPrev,
@@ -79,15 +80,5 @@ export function scrollNext(slider: BlazeSlider, slideCount: number) {
         })
       })
     }, slider.config.transitionDuration)
-  }
-}
-
-export function onSlideEnd(slider: BlazeSlider) {
-  if (slider.onSlideCbs) {
-    const state = slider.states[slider.stateIndex]
-    const [firstSlideIndex, lastSlideIndex] = state.page
-    slider.onSlideCbs.forEach((cb) =>
-      cb(slider.stateIndex, firstSlideIndex, lastSlideIndex)
-    )
   }
 }

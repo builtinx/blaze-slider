@@ -1,5 +1,5 @@
 import { BlazeSlider } from '../slider'
-import { isTouch } from './drag'
+import { isTouch } from './isTouch'
 
 export function handleAutoplay(slider: BlazeSlider) {
   const config = slider.config
